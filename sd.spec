@@ -29,20 +29,20 @@ cargo build --release
 
 %install
 # Create the necessary directory structure in the buildroot
-mkdir -p %{buildroot}/bin
-mkdir -p %{buildroot}/etc/bash_completion.d/
-mkdir -p %{buildroot}/usr/share/man/man1
+# mkdir -p %{buildroot}/bin
+# mkdir -p %{buildroot}/etc/bash_completion.d/
+# mkdir -p %{buildroot}/usr/share/man/man1
 
 # Copy the binary to /bin in the buildroot
-install -m 755 sd %{buildroot}/bin/
+# install -m 755 sd %{buildroot}/bin/
 
 # Copy Bash completion
-sed -i 's/ -o nosort//' completions/sd.bash
-install -m 755 completions/sd.bash %{buildroot}/etc/bash_completion.d/
+# sed -i 's/ -o nosort//' completions/sd.bash
+# install -m 755 completions/sd.bash %{buildroot}/etc/bash_completion.d/
 
 # Copy the man page to /usr/share/man/man1 in the buildroot
-gzip sd.1
-install -m 644 sd.1.gz %{buildroot}/usr/share/man/man1/
+# gzip sd.1
+# install -m 644 sd.1.gz %{buildroot}/usr/share/man/man1/
 
 %files
 # List all the files to be included in the package
