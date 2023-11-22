@@ -13,6 +13,7 @@ Source0:  https://github.com/chmln/sd/archive/refs/tags/v%{version}.tar.gz
 %define debug_package %{nil}
 
 BuildRequires: curl
+BuildRequires: gcc
 
 %if 0%{?amzn}
 BuildRequires: rust
@@ -20,13 +21,11 @@ BuildRequires: cargo
 %endif
 
 %if 0%{?rhel}
-# RHEL 7 specific dependencies
 BuildRequires:  epel-release
 BuildRequires: upx
 %endif
 
 %if 0%{?fedora}
-# RHEL 7 specific dependencies
 BuildRequires: upx
 %endif
 
