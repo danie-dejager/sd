@@ -12,9 +12,18 @@ Source0:  https://github.com/chmln/sd/archive/refs/tags/v%{version}.tar.gz
 
 %define debug_package %{nil}
 
+%if 0%{?amzn}
+BuildRequires: rust
+BuildRequires: cargo
+%endif
+
+%if 0%{?rhel}
+# RHEL 7 specific dependencies
+BuildRequires:  epel-release
 BuildRequires: rust
 BuildRequires: cargo
 BuildRequires: upx
+%endif
 
 %description
 sd is an intuitive find & replace CLI.
@@ -33,7 +42,9 @@ mkdir -p %{buildroot}/etc/bash_completion.d/
 mkdir -p %{buildroot}/usr/share/man/man1
 
 # Copy the binary to /bin in the buildroot
+%if 0%{?rhel}
 upx sd
+%endif
 install -m 755 sd %{buildroot}/bin/
 
 # Copy Bash completion
