@@ -12,6 +12,8 @@ Source0:  https://github.com/chmln/sd/archive/refs/tags/v%{version}.tar.gz
 
 %define debug_package %{nil}
 
+BuildRequires: curl
+
 %if 0%{?amzn}
 BuildRequires: rust
 BuildRequires: cargo
@@ -20,8 +22,11 @@ BuildRequires: cargo
 %if 0%{?rhel}
 # RHEL 7 specific dependencies
 BuildRequires:  epel-release
-BuildRequires: rust
-BuildRequires: cargo
+BuildRequires: upx
+%endif
+
+%if 0%{?fedora}
+# RHEL 7 specific dependencies
 BuildRequires: upx
 %endif
 
@@ -32,7 +37,9 @@ sd is an intuitive find & replace CLI.
 %setup -q
 
 %build
-# If your software requires any build steps, put them here.
+# Install Rust using curl
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+export PATH="$PATH:$HOME/.cargo/bin"
 cargo build --release
 
 %install
