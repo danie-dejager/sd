@@ -49,7 +49,7 @@ mkdir -p %{buildroot}/usr/share/man/man1
 
 # Copy the binary to /bin in the buildroot
 %if 0%{?rhel}
-upx sd
+upx bin/sd
 %endif
 install -m 755 sd %{buildroot}/bin/
 
