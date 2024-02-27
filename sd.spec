@@ -14,6 +14,7 @@ Source0:  https://github.com/chmln/sd/archive/refs/tags/v%{version}.tar.gz
 
 BuildRequires: curl
 BuildRequires: gcc
+BuildRequires: gzip
 
 %description
 sd is an intuitive find & replace CLI.
