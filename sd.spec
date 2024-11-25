@@ -1,6 +1,6 @@
 %define name sd
 %define version 1.0.0
-%define release 5%{?dist}
+%define release 6%{?dist}
 
 Summary:  Intuitive find & replace CLI (sed alternative)
 Name:     %{name}
@@ -51,6 +51,8 @@ install -m 644 gen/sd.1.gz %{buildroot}/usr/share/man/man1/
 /usr/share/man/man1/sd.1.gz
 
 %changelog
+* Mon Nov 25 2024 Danie de Jager - 1.0.0-6
+- Rebuilt using rustc 1.82
 * Mon Aug 5 2024 Danie de Jager - 1.0.0-5
 - Rebuilt using rustc 1.80
 * Fri Apr 26 2024 Danie de Jager - 1.0.0-4
