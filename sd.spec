@@ -1,6 +1,6 @@
 %define name sd
 %define version 1.0.0
-%define release 9%{?dist}
+%define release 10%{?dist}
 
 Summary:  Intuitive find & replace CLI (sed alternative)
 Name:     %{name}
@@ -41,16 +41,18 @@ install -m 755 target/release/%{name} %{buildroot}/bin/
 install -m 755 gen/completions/%{name}.bash %{buildroot}/etc/bash_completion.d/
 
 # Copy the man page to /usr/share/man/man1 in the buildroot
-gzip gen/sd.1
-install -m 644 gen/sd.1.gz %{buildroot}/usr/share/man/man1/
+gzip gen/%{name}.1
+install -m 644 gen/%{name}.1.gz %{buildroot}/usr/share/man/man1/
 
 %files
 # List all the files to be included in the package
-/bin/sd
-/etc/bash_completion.d/sd.bash
-/usr/share/man/man1/sd.1.gz
+/bin/%{name}
+/etc/bash_completion.d/%{name}.bash
+/usr/share/man/man1/%{name}.1.gz
 
 %changelog
+* Fri Aug 15 2025 Danie de Jager - 1.0.0-10
+- Rebuilt using rustc 1.89.0
 * Thu May 29 2025 Danie de Jager - 1.0.0-9
 - Rebuilt using rustc 1.87.0
 * Sun Apr 20 2025 Danie de Jager - 1.0.0-8
